@@ -13,19 +13,19 @@
 .mono { font-family: 'JetBrains Mono', monospace; }
 
 body {
-  background: #0a0c0f;
-  color: #f2f0e8;
+  background: #ffffff;
+  color: #0a0c0f;
   overflow-x: hidden;
 }
 
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #0a0c0f; }
-::-webkit-scrollbar-thumb { background: #ccff00; }
+::-webkit-scrollbar-track { background: #ffffff; }
+::-webkit-scrollbar-thumb { background: #2E86C1; }
 
 /* ===== TICKER ===== */
 .ticker-wrap {
-  background: #ccff00;
-  color: #0a0c0f;
+  background: #2E86C1;
+  color: #ffffff;
   overflow: hidden;
   white-space: nowrap;
   border-top: 2px solid #0a0c0f;
@@ -50,16 +50,18 @@ body {
 
 /* ===== GLASS PANEL (sharper, not pill-soft) ===== */
 .glass {
-  background: rgba(242, 240, 232, 0.04);
+  background: rgba(46, 134, 193, 0.04);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(242, 240, 232, 0.12);
+  border: 1px solid rgba(10, 12, 15, 0.12);
+  box-shadow: 0 4px 24px rgba(10, 12, 15, 0.06);
 }
 
 .glass-lime {
-  background: rgba(204, 255, 0, 0.06);
+  background: rgba(46, 134, 193, 0.08);
   backdrop-filter: blur(18px);
-  border: 1px solid rgba(204, 255, 0, 0.25);
+  border: 1px solid rgba(46, 134, 193, 0.35);
+  box-shadow: 0 4px 24px rgba(46, 134, 193, 0.1);
 }
 
 /* ===== NOISE TEXTURE ===== */
@@ -79,7 +81,7 @@ body {
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 700px 500px at 15% 0%, rgba(204,255,0,0.08), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 15% 0%, rgba(46,134,193,0.08), transparent 60%),
     radial-gradient(ellipse 600px 500px at 100% 40%, rgba(255,107,53,0.08), transparent 60%);
 }
 
@@ -91,24 +93,24 @@ body {
 }
 
 .outline-text {
-  -webkit-text-stroke: 1.5px #f2f0e8;
+  -webkit-text-stroke: 1.5px #0a0c0f;
   color: transparent;
 }
 
 /* ===== LEDGER ROWS ===== */
 .ledger-row {
-  border-top: 1px solid rgba(242,240,232,0.15);
+  border-top: 1px solid rgba(10,12,15,0.15);
   transition: all 0.3s ease;
   position: relative;
 }
 .ledger-row:hover {
-  background: rgba(204,255,0,0.04);
+  background: rgba(46,134,193,0.04);
   padding-left: 8px;
 }
-.ledger-row:last-child { border-bottom: 1px solid rgba(242,240,232,0.15); }
+.ledger-row:last-child { border-bottom: 1px solid rgba(10,12,15,0.15); }
 
 .hash-id {
-  color: #ccff00;
+  color: #2E86C1;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   opacity: 0.7;
@@ -129,12 +131,12 @@ body {
 
 /* ===== SKILL PILL - sharp not round ===== */
 .pill {
-  border: 1px solid rgba(242,240,232,0.25);
+  border: 1px solid rgba(10,12,15,0.25);
   transition: all 0.25s ease;
 }
 .pill:hover {
-  border-color: #ccff00;
-  background: rgba(204,255,0,0.08);
+  border-color: #2E86C1;
+  background: rgba(46,134,193,0.08);
   transform: translateY(-2px);
 }
 
@@ -147,7 +149,7 @@ body {
   left: 0; bottom: -4px;
   height: 2px;
   width: 0;
-  background: #ccff00;
+  background: #2E86C1;
   transition: width 0.3s ease;
 }
 .underline-grow:hover::after { width: 100%; }
@@ -172,7 +174,7 @@ body {
 <!-- NAV -->
 <nav class="fixed top-0 w-full z-50 glass">
   <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex justify-between items-center">
-    <div class="display font-bold text-lg">DM<span class="text-[#ccff00]">.</span></div>
+    <div class="display font-bold text-lg">DM<span class="text-[#2E86C1]">.</span></div>
     <div class="hidden md:flex gap-6 mono text-sm">
       <a href="#about" class="underline-grow">01 / ABOUT</a>
       <a href="#work" class="underline-grow">02 / WORK</a>
@@ -207,7 +209,7 @@ body {
 <section class="min-h-screen flex flex-col justify-center px-6 md:px-10 pt-40 pb-20 relative z-10 max-w-7xl mx-auto">
 
   <div class="reveal" data-reveal>
-    <div class="mono text-xs text-[#ccff00] mb-4 tracking-widest">// PORTFOLIO_2025<span class="blink">_</span></div>
+    <div class="mono text-xs text-[#2E86C1] mb-4 tracking-widest">// PORTFOLIO_2025<span class="blink">_</span></div>
   </div>
 
   <h1 class="mega display font-black mb-2 reveal" data-reveal>
@@ -218,14 +220,14 @@ body {
   </h1>
 
   <div class="reveal grid md:grid-cols-2 gap-10 items-end mt-4" data-reveal>
-    <p class="text-lg md:text-xl text-[#f2f0e8]/80 leading-relaxed max-w-md">
+    <p class="text-lg md:text-xl text-[#0a0c0f]/80 leading-relaxed max-w-md">
       I write, design, and build community for Web3 protocols — while finishing an engineering degree that taught me systems don't scale on hype alone.
     </p>
     <div class="flex gap-4 md:justify-end">
-      <a href="#work" class="bg-[#ccff00] text-[#0a0c0f] px-7 py-3.5 font-bold display hover:bg-[#f2f0e8] transition duration-300">
+      <a href="#work" class="bg-[#2E86C1] text-white px-7 py-3.5 font-bold display hover:bg-[#0a0c0f] transition duration-300">
         VIEW WORK →
       </a>
-      <a href="#contact" class="glass px-7 py-3.5 font-bold display hover:border-[#ccff00] transition duration-300">
+      <a href="#contact" class="glass px-7 py-3.5 font-bold display hover:border-[#2E86C1] transition duration-300">
         CONTACT
       </a>
     </div>
@@ -237,35 +239,35 @@ body {
 <section id="about" class="py-24 px-6 md:px-10 relative z-10 max-w-7xl mx-auto">
   <div class="reveal grid md:grid-cols-12 gap-8" data-reveal>
     <div class="md:col-span-4">
-      <div class="mono text-xs text-[#ccff00] mb-4">// 00 ABOUT</div>
+      <div class="mono text-xs text-[#2E86C1] mb-4">// 00 ABOUT</div>
       <h2 class="display text-4xl md:text-5xl font-black leading-tight">NOT JUST<br>HYPE.</h2>
     </div>
-    <div class="md:col-span-8 space-y-5 text-lg text-[#f2f0e8]/75 leading-relaxed">
+    <div class="md:col-span-8 space-y-5 text-lg text-[#0a0c0f]/75 leading-relaxed">
       <p>I'm a graduate of Agricultural and Biosystems Engineering from the University of Ilorin, but my real classroom has been Web3 — writing threads, running Discords, and growing communities from zero.</p>
-      <p>Since January 2024 I've worked with protocols like <span class="text-[#ccff00] mono text-base">WAGMI</span>, <span class="text-[#ccff00] mono text-base">Swisstronik</span>, and <span class="text-[#ccff00] mono text-base">Xion</span> — turning technical concepts into content people actually engage with. I'm now stepping into ambassador roles with <span class="text-[#ff6b35] mono text-base">Cache Wallet</span> and <span class="text-[#ff6b35] mono text-base">1Delta</span>.</p>
+      <p>Since January 2024 I've worked with protocols like <span class="text-[#2E86C1] mono text-base">WAGMI</span>, <span class="text-[#2E86C1] mono text-base">Swisstronik</span>, and <span class="text-[#2E86C1] mono text-base">Xion</span> — turning technical concepts into content people actually engage with. I'm now stepping into ambassador roles with <span class="text-[#ff6b35] mono text-base">Cache Wallet</span> and <span class="text-[#ff6b35] mono text-base">1Delta</span>.</p>
       <p>The engineering background isn't separate from the Web3 work — it's why I approach community building like a system: inputs, feedback loops, measurable output. Sustainability thinking from agtech. Growth thinking from crypto.</p>
     </div>
   </div>
 </section>
 
 <!-- STATS STRIP -->
-<section class="relative z-10 border-y border-[#f2f0e8]/15 reveal" data-reveal>
+<section class="relative z-10 border-y border-[#0a0c0f]/15 reveal" data-reveal>
   <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4">
-    <div class="p-8 border-r border-[#f2f0e8]/15">
-      <div class="display text-4xl md:text-5xl font-bold text-[#ccff00]">20+</div>
-      <div class="mono text-xs text-[#f2f0e8]/50 mt-2">ARTICLES / THREADS</div>
+    <div class="p-8 border-r border-[#0a0c0f]/15">
+      <div class="display text-4xl md:text-5xl font-bold text-[#2E86C1]">20+</div>
+      <div class="mono text-xs text-[#0a0c0f]/50 mt-2">ARTICLES / THREADS</div>
     </div>
-    <div class="p-8 border-r border-[#f2f0e8]/15">
+    <div class="p-8 border-r border-[#0a0c0f]/15">
       <div class="display text-4xl md:text-5xl font-bold text-[#ff6b35]">40%</div>
-      <div class="mono text-xs text-[#f2f0e8]/50 mt-2">COMMUNITY GROWTH</div>
+      <div class="mono text-xs text-[#0a0c0f]/50 mt-2">COMMUNITY GROWTH</div>
     </div>
-    <div class="p-8 border-r border-[#f2f0e8]/15">
-      <div class="display text-4xl md:text-5xl font-bold text-[#ccff00]">5+</div>
-      <div class="mono text-xs text-[#f2f0e8]/50 mt-2">PROTOCOLS WORKED</div>
+    <div class="p-8 border-r border-[#0a0c0f]/15">
+      <div class="display text-4xl md:text-5xl font-bold text-[#2E86C1]">5+</div>
+      <div class="mono text-xs text-[#0a0c0f]/50 mt-2">PROTOCOLS WORKED</div>
     </div>
     <div class="p-8">
       <div class="display text-4xl md:text-5xl font-bold text-[#ff6b35]">2</div>
-      <div class="mono text-xs text-[#f2f0e8]/50 mt-2">AMBASSADOR ROLES</div>
+      <div class="mono text-xs text-[#0a0c0f]/50 mt-2">AMBASSADOR ROLES</div>
     </div>
   </div>
 </section>
@@ -273,8 +275,8 @@ body {
 <!-- WORK — LEDGER STYLE -->
 <section id="work" class="py-28 px-6 md:px-10 relative z-10 max-w-7xl mx-auto">
   <div class="reveal flex items-end justify-between mb-16 flex-wrap gap-4" data-reveal>
-    <h2 class="display text-5xl md:text-7xl font-black">WORK<span class="text-[#ccff00]">/</span>LOG</h2>
-    <div class="mono text-sm text-[#f2f0e8]/50">9 ENTRIES</div>
+    <h2 class="display text-5xl md:text-7xl font-black">WORK<span class="text-[#2E86C1]">/</span>LOG</h2>
+    <div class="mono text-sm text-[#0a0c0f]/50">9 ENTRIES</div>
   </div>
 
   <div class="reveal" data-reveal>
@@ -283,13 +285,13 @@ body {
       <div class="md:col-span-1 hash-id">TX#001</div>
       <div class="md:col-span-4">
         <h3 class="display text-2xl font-bold">WAGMI Community</h3>
-        <p class="mono text-xs text-[#ccff00] mt-1">WEB3 COMMUNITY LEAD</p>
+        <p class="mono text-xs text-[#2E86C1] mt-1">WEB3 COMMUNITY LEAD</p>
       </div>
-      <div class="md:col-span-4 text-[#f2f0e8]/70">40% growth to 500+ members via 6+ quarterly meetups</div>
+      <div class="md:col-span-4 text-[#0a0c0f]/70">40% growth to 500+ members via 6+ quarterly meetups</div>
       <div class="md:col-span-2 flex flex-wrap gap-2">
         <span class="pill mono text-xs px-2.5 py-1">COMMUNITY</span>
       </div>
-      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">2024–NOW</div>
+      <div class="md:col-span-1 mono text-xs text-[#0a0c0f]/40 text-right">2024–NOW</div>
     </div>
 
     <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
@@ -298,11 +300,11 @@ body {
         <h3 class="display text-2xl font-bold">Cache Wallet</h3>
         <p class="mono text-xs text-[#ff6b35] mt-1">AMBASSADOR (INCOMING)</p>
       </div>
-      <div class="md:col-span-4 text-[#f2f0e8]/70">Selected to lead content & community for secure multi-asset Web3 wallet</div>
+      <div class="md:col-span-4 text-[#0a0c0f]/70">Selected to lead content & community for secure multi-asset Web3 wallet</div>
       <div class="md:col-span-2 flex flex-wrap gap-2">
         <span class="pill mono text-xs px-2.5 py-1">AMBASSADOR</span>
       </div>
-      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">MAY 2025</div>
+      <div class="md:col-span-1 mono text-xs text-[#0a0c0f]/40 text-right">MAY 2025</div>
     </div>
 
     <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
@@ -311,37 +313,37 @@ body {
         <h3 class="display text-2xl font-bold">1Delta</h3>
         <p class="mono text-xs text-[#ff6b35] mt-1">AMBASSADOR (INCOMING)</p>
       </div>
-      <div class="md:col-span-4 text-[#f2f0e8]/70">Appointed to drive content & engagement for decentralized margin trading platform</div>
+      <div class="md:col-span-4 text-[#0a0c0f]/70">Appointed to drive content & engagement for decentralized margin trading platform</div>
       <div class="md:col-span-2 flex flex-wrap gap-2">
         <span class="pill mono text-xs px-2.5 py-1">DEFI</span>
       </div>
-      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">MAY 2025</div>
+      <div class="md:col-span-1 mono text-xs text-[#0a0c0f]/40 text-right">MAY 2025</div>
     </div>
 
     <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
       <div class="md:col-span-1 hash-id">TX#004</div>
       <div class="md:col-span-4">
         <h3 class="display text-2xl font-bold">Swisstronik</h3>
-        <p class="mono text-xs text-[#ccff00] mt-1">CONTENT & DESIGN</p>
+        <p class="mono text-xs text-[#2E86C1] mt-1">CONTENT & DESIGN</p>
       </div>
-      <div class="md:col-span-4 text-[#f2f0e8]/70">20+ threads & infographics, 25% engagement lift for 5,000+ members</div>
+      <div class="md:col-span-4 text-[#0a0c0f]/70">20+ threads & infographics, 25% engagement lift for 5,000+ members</div>
       <div class="md:col-span-2 flex flex-wrap gap-2">
         <span class="pill mono text-xs px-2.5 py-1">DESIGN</span>
       </div>
-      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">DEC24–NOW</div>
+      <div class="md:col-span-1 mono text-xs text-[#0a0c0f]/40 text-right">DEC24–NOW</div>
     </div>
 
     <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
       <div class="md:col-span-1 hash-id">TX#005</div>
       <div class="md:col-span-4">
         <h3 class="display text-2xl font-bold">College Guide Africa</h3>
-        <p class="mono text-xs text-[#ccff00] mt-1">CONTENT WRITING INTERN</p>
+        <p class="mono text-xs text-[#2E86C1] mt-1">CONTENT WRITING INTERN</p>
       </div>
-      <div class="md:col-span-4 text-[#f2f0e8]/70">20+ SEO articles, 10+ infographics, 20% engagement increase</div>
+      <div class="md:col-span-4 text-[#0a0c0f]/70">20+ SEO articles, 10+ infographics, 20% engagement increase</div>
       <div class="md:col-span-2 flex flex-wrap gap-2">
         <span class="pill mono text-xs px-2.5 py-1">SEO</span>
       </div>
-      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">AUG24–APR25</div>
+      <div class="md:col-span-1 mono text-xs text-[#0a0c0f]/40 text-right">AUG24–APR25</div>
     </div>
 
     <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
@@ -350,24 +352,24 @@ body {
         <h3 class="display text-2xl font-bold">Xion</h3>
         <p class="mono text-xs text-[#ff6b35] mt-1">CONTENT WRITER</p>
       </div>
-      <div class="md:col-span-4 text-[#f2f0e8]/70">5+ Medium articles on DeFi/NFTs, 1,000+ monthly readers, 25% Discord/Telegram lift</div>
+      <div class="md:col-span-4 text-[#0a0c0f]/70">5+ Medium articles on DeFi/NFTs, 1,000+ monthly readers, 25% Discord/Telegram lift</div>
       <div class="md:col-span-2 flex flex-wrap gap-2">
         <span class="pill mono text-xs px-2.5 py-1">DEFI</span>
       </div>
-      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">JUN–NOV24</div>
+      <div class="md:col-span-1 mono text-xs text-[#0a0c0f]/40 text-right">JUN–NOV24</div>
     </div>
 
     <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
       <div class="md:col-span-1 hash-id">TX#007</div>
       <div class="md:col-span-4">
         <h3 class="display text-2xl font-bold">ABE Energy Profile</h3>
-        <p class="mono text-xs text-[#ccff00] mt-1">ENGINEERING LEAD</p>
+        <p class="mono text-xs text-[#2E86C1] mt-1">ENGINEERING LEAD</p>
       </div>
-      <div class="md:col-span-4 text-[#f2f0e8]/70">20% emissions reduction via RETScreen solar analysis — capstone project</div>
+      <div class="md:col-span-4 text-[#0a0c0f]/70">20% emissions reduction via RETScreen solar analysis — capstone project</div>
       <div class="md:col-span-2 flex flex-wrap gap-2">
         <span class="pill mono text-xs px-2.5 py-1">ENGINEERING</span>
       </div>
-      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">2025</div>
+      <div class="md:col-span-1 mono text-xs text-[#0a0c0f]/40 text-right">2025</div>
     </div>
 
     <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
@@ -376,31 +378,31 @@ body {
         <h3 class="display text-2xl font-bold">Ministry of Agriculture</h3>
         <p class="mono text-xs text-[#ff6b35] mt-1">AGRICULTURAL INTERN</p>
       </div>
-      <div class="md:col-span-4 text-[#f2f0e8]/70">Farm visits & equipment analysis, proposed upgrades improving efficiency ~10%</div>
+      <div class="md:col-span-4 text-[#0a0c0f]/70">Farm visits & equipment analysis, proposed upgrades improving efficiency ~10%</div>
       <div class="md:col-span-2 flex flex-wrap gap-2">
         <span class="pill mono text-xs px-2.5 py-1">AGTECH</span>
       </div>
-      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">MAR–SEP24</div>
+      <div class="md:col-span-1 mono text-xs text-[#0a0c0f]/40 text-right">MAR–SEP24</div>
     </div>
 
     <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
       <div class="md:col-span-1 hash-id">TX#009</div>
       <div class="md:col-span-4">
         <h3 class="display text-2xl font-bold">Industrial Training Fund</h3>
-        <p class="mono text-xs text-[#ccff00] mt-1">INDUSTRIAL TRAINING INTERN</p>
+        <p class="mono text-xs text-[#2E86C1] mt-1">INDUSTRIAL TRAINING INTERN</p>
       </div>
-      <div class="md:col-span-4 text-[#f2f0e8]/70">Maintained CNC/lathe/grinder tools, analyzed 50+ trainee records, 15% program lift</div>
+      <div class="md:col-span-4 text-[#0a0c0f]/70">Maintained CNC/lathe/grinder tools, analyzed 50+ trainee records, 15% program lift</div>
       <div class="md:col-span-2 flex flex-wrap gap-2">
         <span class="pill mono text-xs px-2.5 py-1">DATA</span>
       </div>
-      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">SEP–DEC23</div>
+      <div class="md:col-span-1 mono text-xs text-[#0a0c0f]/40 text-right">SEP–DEC23</div>
     </div>
 
   </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="py-28 px-6 md:px-10 relative z-10 border-t border-[#f2f0e8]/15">
+<section id="skills" class="py-28 px-6 md:px-10 relative z-10 border-t border-[#0a0c0f]/15">
   <div class="max-w-7xl mx-auto">
     <h2 class="reveal display text-5xl md:text-7xl font-black mb-16" data-reveal>
       SKILL<span class="text-[#ff6b35]">SET</span>
@@ -408,7 +410,7 @@ body {
 
     <div class="reveal grid md:grid-cols-3 gap-10" data-reveal>
       <div>
-        <div class="mono text-xs text-[#ccff00] mb-4">// WEB3 & BLOCKCHAIN</div>
+        <div class="mono text-xs text-[#2E86C1] mb-4">// WEB3 & BLOCKCHAIN</div>
         <div class="flex flex-wrap gap-2">
           <span class="pill px-4 py-2 mono text-sm">DeFi</span>
           <span class="pill px-4 py-2 mono text-sm">NFTs</span>
@@ -426,7 +428,7 @@ body {
         </div>
       </div>
       <div>
-        <div class="mono text-xs text-[#ccff00] mb-4">// TECHNICAL</div>
+        <div class="mono text-xs text-[#2E86C1] mb-4">// TECHNICAL</div>
         <div class="flex flex-wrap gap-2">
           <span class="pill px-4 py-2 mono text-sm">Excel</span>
           <span class="pill px-4 py-2 mono text-sm">RETScreen</span>
@@ -439,17 +441,17 @@ body {
 </section>
 
 <!-- EDUCATION -->
-<section id="education" class="py-28 px-6 md:px-10 relative z-10 border-t border-[#f2f0e8]/15 max-w-7xl mx-auto">
+<section id="education" class="py-28 px-6 md:px-10 relative z-10 border-t border-[#0a0c0f]/15 max-w-7xl mx-auto">
   <h2 class="reveal display text-5xl md:text-7xl font-black mb-16" data-reveal>
-    EDU<span class="text-[#ccff00]">/</span>CATION
+    EDU<span class="text-[#2E86C1]">/</span>CATION
   </h2>
 
   <div class="reveal grid md:grid-cols-12 gap-8 mb-12" data-reveal>
-    <div class="md:col-span-3 mono text-xs text-[#f2f0e8]/50">SEP 2019 — SEP 2025</div>
+    <div class="md:col-span-3 mono text-xs text-[#0a0c0f]/50">SEP 2019 — SEP 2025</div>
     <div class="md:col-span-9">
-      <h3 class="display text-2xl md:text-3xl font-bold mb-2">B.Eng. Agricultural & Biosystems Engineering <span class="text-[#ccff00] mono text-base align-middle">✓ GRADUATED</span></h3>
-      <p class="text-[#f2f0e8]/60 mb-4">University of Ilorin, Ilorin, Nigeria</p>
-      <p class="text-[#f2f0e8]/70 mb-3">Capstone Project: <span class="text-[#ccff00]">ABE Departmental Building Energy Profile</span> — reduced emissions 20% through solar panel installation, analyzed using RETScreen.</p>
+      <h3 class="display text-2xl md:text-3xl font-bold mb-2">B.Eng. Agricultural & Biosystems Engineering <span class="text-[#2E86C1] mono text-base align-middle">✓ GRADUATED</span></h3>
+      <p class="text-[#0a0c0f]/60 mb-4">University of Ilorin, Ilorin, Nigeria</p>
+      <p class="text-[#0a0c0f]/70 mb-3">Capstone Project: <span class="text-[#2E86C1]">ABE Departmental Building Energy Profile</span> — reduced emissions 20% through solar panel installation, analyzed using RETScreen.</p>
       <div class="flex flex-wrap gap-2">
         <span class="pill mono text-xs px-2.5 py-1">Agricultural Systems Analysis</span>
         <span class="pill mono text-xs px-2.5 py-1">Biosystems Design</span>
@@ -459,16 +461,16 @@ body {
   </div>
 
   <div class="reveal grid md:grid-cols-12 gap-8" data-reveal>
-    <div class="md:col-span-3 mono text-xs text-[#f2f0e8]/50">OCT 2018 — AUG 2019</div>
+    <div class="md:col-span-3 mono text-xs text-[#0a0c0f]/50">OCT 2018 — AUG 2019</div>
     <div class="md:col-span-9">
       <h3 class="display text-xl md:text-2xl font-bold mb-2">Preparatory Coursework</h3>
-      <p class="text-[#f2f0e8]/60">Lagos, Nigeria — Mathematics & physics foundation for engineering studies</p>
+      <p class="text-[#0a0c0f]/60">Lagos, Nigeria — Mathematics & physics foundation for engineering studies</p>
     </div>
   </div>
 </section>
 
 <!-- CERTIFICATIONS -->
-<section id="certifications" class="py-28 px-6 md:px-10 relative z-10 border-t border-[#f2f0e8]/15">
+<section id="certifications" class="py-28 px-6 md:px-10 relative z-10 border-t border-[#0a0c0f]/15">
   <div class="max-w-7xl mx-auto">
     <h2 class="reveal display text-5xl md:text-7xl font-black mb-16" data-reveal>
       CERTS<span class="text-[#ff6b35]">.</span>
@@ -476,26 +478,26 @@ body {
 
     <div class="reveal grid md:grid-cols-3 gap-6" data-reveal>
       <div class="glass p-8">
-        <div class="mono text-xs text-[#ccff00] mb-3">APR 2025</div>
+        <div class="mono text-xs text-[#2E86C1] mb-3">APR 2025</div>
         <h3 class="display text-lg font-bold mb-2">Content Writing Internship</h3>
-        <p class="text-[#f2f0e8]/60 text-sm">College Guide Africa — SEO content creation & audience engagement strategies</p>
+        <p class="text-[#0a0c0f]/60 text-sm">College Guide Africa — SEO content creation & audience engagement strategies</p>
       </div>
       <div class="glass p-8">
         <div class="mono text-xs text-[#ff6b35] mb-3">JUL 2019</div>
         <h3 class="display text-lg font-bold mb-2">ICT & Graphics Professional Course</h3>
-        <p class="text-[#f2f0e8]/60 text-sm">GlobalTech Computer Institute — Canva, Photoshop, Corel Draw, MS Office</p>
+        <p class="text-[#0a0c0f]/60 text-sm">GlobalTech Computer Institute — Canva, Photoshop, Corel Draw, MS Office</p>
       </div>
       <div class="glass p-8">
-        <div class="mono text-xs text-[#ccff00] mb-3">SEP 2018</div>
+        <div class="mono text-xs text-[#2E86C1] mb-3">SEP 2018</div>
         <h3 class="display text-lg font-bold mb-2">Pre-Apprenticeship Training</h3>
-        <p class="text-[#f2f0e8]/60 text-sm">Industrial Training Fund — Agricultural systems & data management foundations</p>
+        <p class="text-[#0a0c0f]/60 text-sm">Industrial Training Fund — Agricultural systems & data management foundations</p>
       </div>
     </div>
 
     <!-- Languages & Interests strip -->
-    <div class="reveal mt-16 pt-10 border-t border-[#f2f0e8]/15 grid md:grid-cols-2 gap-10" data-reveal>
+    <div class="reveal mt-16 pt-10 border-t border-[#0a0c0f]/15 grid md:grid-cols-2 gap-10" data-reveal>
       <div>
-        <div class="mono text-xs text-[#ccff00] mb-4">// LANGUAGES</div>
+        <div class="mono text-xs text-[#2E86C1] mb-4">// LANGUAGES</div>
         <div class="flex gap-3">
           <span class="pill px-4 py-2 mono text-sm">English — Fluent</span>
           <span class="pill px-4 py-2 mono text-sm">Igbo — Fluent</span>
@@ -516,31 +518,31 @@ body {
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="py-32 px-6 md:px-10 relative z-10 border-t border-[#f2f0e8]/15">
+<section id="contact" class="py-32 px-6 md:px-10 relative z-10 border-t border-[#0a0c0f]/15">
   <div class="max-w-7xl mx-auto">
     <div class="reveal" data-reveal>
-      <div class="mono text-xs text-[#ccff00] mb-6">// LET'S TALK</div>
+      <div class="mono text-xs text-[#2E86C1] mb-6">// LET'S TALK</div>
       <h2 class="display font-black mega mb-12">
         GET IN<br><span class="outline-text">TOUCH</span>
       </h2>
     </div>
 
     <div class="reveal grid md:grid-cols-3 gap-6 mb-16" data-reveal>
-      <a href="mailto:mgbenkadaniel@gmail.com" class="glass-lime p-8 hover:bg-[#ccff00]/10 transition duration-300 group">
-        <div class="mono text-xs text-[#ccff00] mb-3">EMAIL</div>
+      <a href="mailto:mgbenkadaniel@gmail.com" class="glass-lime p-8 hover:bg-[#2E86C1]/10 transition duration-300 group">
+        <div class="mono text-xs text-[#2E86C1] mb-3">EMAIL</div>
         <div class="display text-lg font-bold break-all">mgbenkadaniel@gmail.com</div>
       </a>
-      <a href="https://linkedin.com/in/danielmgbenka" target="_blank" rel="noopener noreferrer" class="glass p-8 hover:border-[#ccff00] transition duration-300">
-        <div class="mono text-xs text-[#f2f0e8]/50 mb-3">LINKEDIN</div>
+      <a href="https://linkedin.com/in/danielmgbenka" target="_blank" rel="noopener noreferrer" class="glass p-8 hover:border-[#2E86C1] transition duration-300">
+        <div class="mono text-xs text-[#0a0c0f]/50 mb-3">LINKEDIN</div>
         <div class="display text-lg font-bold">/in/danielmgbenka</div>
       </a>
       <a href="https://x.com/jellereth" target="_blank" rel="noopener noreferrer" class="glass p-8 hover:border-[#ff6b35] transition duration-300">
-        <div class="mono text-xs text-[#f2f0e8]/50 mb-3">X / TWITTER</div>
+        <div class="mono text-xs text-[#0a0c0f]/50 mb-3">X / TWITTER</div>
         <div class="display text-lg font-bold">@jellereth</div>
       </a>
     </div>
 
-    <div class="reveal flex flex-wrap gap-x-10 gap-y-3 mono text-sm text-[#f2f0e8]/50" data-reveal>
+    <div class="reveal flex flex-wrap gap-x-10 gap-y-3 mono text-sm text-[#0a0c0f]/50" data-reveal>
       <div>PHONE: +234 813 8700 329</div>
       <div>LOCATION: KETU, LAGOS, NIGERIA</div>
       <div>STATUS: AVAILABLE NOW</div>
@@ -548,8 +550,8 @@ body {
   </div>
 </section>
 
-<footer class="border-t border-[#f2f0e8]/15 py-8 px-6 md:px-10 relative z-10">
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-2 mono text-xs text-[#f2f0e8]/40">
+<footer class="border-t border-[#0a0c0f]/15 py-8 px-6 md:px-10 relative z-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-2 mono text-xs text-[#0a0c0f]/40">
     <div>© 2025 DANIEL MGBENKA. ALL RIGHTS RESERVED.</div>
     <div>BUILT WITH HTML + TAILWIND. DEPLOYED ON GITHUB PAGES.</div>
   </div>
