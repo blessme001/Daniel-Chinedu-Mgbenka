@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Mgbenka - Web3 Content Creator & Community Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/latest/umd/lucide.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, .heading {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse-slow {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .card-reveal {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .card-reveal:nth-child(1) { animation-delay: 0.1s; }
+        .card-reveal:nth-child(2) { animation-delay: 0.2s; }
+        .card-reveal:nth-child(3) { animation-delay: 0.3s; }
+        .card-reveal:nth-child(4) { animation-delay: 0.4s; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glow-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glow-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(251, 191, 36, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .glow-card:hover::before {
+            opacity: 1;
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.25rem;
+            }
+            h2 {
+                font-size: 1.875rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-[#0f1419] via-[#1a1f2e] to-[#0f1419] text-white smooth-scroll">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-[#0f1419]/80 backdrop-blur-md z-50 border-b border-emerald-500/10">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold gradient-text">Daniel Mgbenka</div>
+            <div class="hidden md:flex gap-6">
+                <a href="#work" class="text-sm hover:text-emerald-400 transition duration-300">Work</a>
+                <a href="#skills" class="text-sm hover:text-emerald-400 transition duration-300">Skills</a>
+                <a href="#contact" class="text-sm hover:text-emerald-400 transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+        <!-- Animated gradient orbs -->
+        <div class="absolute top-20 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <!-- Badge -->
+            <div class="mb-6 inline-block">
+                <div class="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-sm text-emerald-300">
+                    ✨ Web3 × AgTech × Content
+                </div>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Build community.
+                <br />
+                <span class="gradient-text">Move things.</span>
+            </h1>
+
+            <!-- Subheading -->
+            <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Final-year engineering student. Web3 content creator. Community builder growing 40% year-over-year. Passionate about blockchain, sustainability, and the future of DeFi.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <a href="#work" class="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold rounded-lg transition transform hover:scale-105 duration-300">
+                    See My Work
+                </a>
+                <a href="#contact" class="px-8 py-3 border border-amber-500/50 hover:border-amber-500 text-amber-400 font-semibold rounded-lg transition duration-300">
+                    Get in Touch
+                </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+                <div class="relative bg-[#1a1f2e] border border-emerald-500/20 rounded-lg p-6 hover:border-emerald-500/50 transition duration-300">
+                    <div class="text-3xl md:text-4xl font-bold text-emerald-400">20+</div>
+                    <div class="text-sm text-gray-400 mt-2">Articles & Threads</div>
+                </div>
+                <div class="relative bg-[#1a1f2e] border border-emerald-500/20 rounded-lg p-6 hover:border-emerald-500/50 transition duration-300">
+                    <div class="text-3xl md:text-4xl font-bold text-amber-400">40%</div>
+                    <div class="text-sm text-gray-400 mt-2">Community Growth</div>
+                </div>
+                <div class="relative bg-[#1a1f2e] border border-emerald-500/20 rounded-lg p-6 hover:border-emerald-500/50 transition duration-300">
+                    <div class="text-3xl md:text-4xl font-bold text-emerald-400">5yrs+</div>
+                    <div class="text-sm text-gray-400 mt-2">Blockchain Interest</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                <span class="gradient-text">Work</span>
+            </h2>
+            <p class="text-gray-400 mb-16 text-lg">Projects that moved the needle</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Work Card 1 -->
+                <div class="card-reveal group relative bg-gradient-to-br from-[#1a1f2e] to-[#151a27] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-500 glow-card">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-1">WAGMI Community Growth</h3>
+                                <p class="text-emerald-400 font-medium">Web3 Community Lead</p>
+                            </div>
+                            <span class="text-xs text-gray-500 bg-gray-800/50 px-3 py-1 rounded-full">Jan 2024 – Now</span>
+                        </div>
+                        <p class="text-amber-300 font-semibold mb-4">40% growth to 500+ members</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Community</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Blockchain</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Meetups</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work Card 2 -->
+                <div class="card-reveal group relative bg-gradient-to-br from-[#1a1f2e] to-[#151a27] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-500 glow-card">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-1">Swisstronik Content Campaign</h3>
+                                <p class="text-emerald-400 font-medium">Content Creator & Designer</p>
+                            </div>
+                            <span class="text-xs text-gray-500 bg-gray-800/50 px-3 py-1 rounded-full">Mar – May 2024</span>
+                        </div>
+                        <p class="text-amber-300 font-semibold mb-4">25% engagement boost for 5000+ members</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Content</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Design</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Social</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work Card 3 -->
+                <div class="card-reveal group relative bg-gradient-to-br from-[#1a1f2e] to-[#151a27] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-500 glow-card">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-1">College Guide Africa</h3>
+                                <p class="text-emerald-400 font-medium">Content Writer</p>
+                            </div>
+                            <span class="text-xs text-gray-500 bg-gray-800/50 px-3 py-1 rounded-full">Aug 2024 – Apr 2025</span>
+                        </div>
+                        <p class="text-amber-300 font-semibold mb-4">20+ SEO articles, 20% engagement lift</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Writing</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">SEO</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Education</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work Card 4 -->
+                <div class="card-reveal group relative bg-gradient-to-br from-[#1a1f2e] to-[#151a27] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-500 glow-card">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-1">ABE Energy Sustainability</h3>
+                                <p class="text-emerald-400 font-medium">Engineering Project Lead</p>
+                            </div>
+                            <span class="text-xs text-gray-500 bg-gray-800/50 px-3 py-1 rounded-full">2025</span>
+                        </div>
+                        <p class="text-amber-300 font-semibold mb-4">20% emissions reduction via solar analysis</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Engineering</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Data</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Sustainability</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 bg-gradient-to-b from-transparent via-[#0f1419]/50 to-transparent">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                <span class="gradient-text">Skills</span>
+            </h2>
+            <p class="text-gray-400 mb-16 text-lg">Tools and expertise</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Skills Group 1 -->
+                <div class="bg-[#1a1f2e] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-300 transform hover:translate-y-[-4px]">
+                    <h3 class="text-xl font-bold text-emerald-400 mb-6">Web3 & Blockchain</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">DeFi</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">NFTs</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">Community Engagement</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">Protocol Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Group 2 -->
+                <div class="bg-[#1a1f2e] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-300 transform hover:translate-y-[-4px]">
+                    <h3 class="text-xl font-bold text-emerald-400 mb-6">Content & Design</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">Content Writing</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">SEO</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">Canva</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">Photoshop</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Group 3 -->
+                <div class="bg-[#1a1f2e] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-300 transform hover:translate-y-[-4px]">
+                    <h3 class="text-xl font-bold text-emerald-400 mb-6">Technical</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">Data Analysis (Excel)</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">RETScreen</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">Microsoft Office</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                            <span class="text-gray-300">Corel Draw</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-gradient-to-br from-emerald-500/10 to-amber-500/10 border border-emerald-500/30 rounded-2xl p-8 md:p-12 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's build something together</h2>
+                <p class="text-gray-300 mb-8 text-lg">
+                    Looking for a Web3 content creator, community manager, or just want to chat about blockchain and agtech? Let's connect.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <a href="mailto:mgbenkadaniel@gmail.com" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold rounded-lg transition transform hover:scale-105 duration-300">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        Email Me
+                    </a>
+                    <a href="https://linkedin.com/in/danielmgbenka" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-amber-500/50 hover:border-amber-500 text-amber-400 font-semibold rounded-lg transition duration-300">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://x.com/jellereth" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-500/50 hover:border-gray-500 text-gray-300 font-semibold rounded-lg transition duration-300">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.748-5.924 6.748h-3.31l7.73-8.835L.424 2.25h6.7l4.759 6.318L17.525 2.25h.719zm-1.169 17.852h1.833L6.637 4.087H4.696l12.578 16.015z"/>
+                        </svg>
+                        X (Twitter)
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                    <div class="text-gray-400">
+                        <div class="text-amber-400 font-semibold mb-1">Location</div>
+                        Ketu, Lagos, Nigeria
+                    </div>
+                    <div class="text-gray-400">
+                        <div class="text-emerald-400 font-semibold mb-1">Phone</div>
+                        +234 813 8700 329
+                    </div>
+                    <div class="text-gray-400">
+                        <div class="text-emerald-400 font-semibold mb-1">Email</div>
+                        mgbenkadaniel@gmail.com
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-emerald-500/10 py-8 px-6">
+        <div class="max-w-6xl mx-auto text-center text-gray-500 text-sm">
+            <p>Built with HTML + Tailwind CSS. Deployed on GitHub Pages.</p>
+            <p class="mt-2">© 2025 Daniel Mgbenka. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('card-reveal');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all work cards
+        document.querySelectorAll('.group').forEach(card => {
+            if (!card.classList.contains('card-reveal')) {
+                observer.observe(card);
+            }
+        });
+    </script>
+</body>
+</html>
