@@ -5,335 +5,323 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Mgbenka - Web3 Content Creator & Community Builder</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/latest/umd/lucide.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
         
-        * {
-            font-family: 'Inter', sans-serif;
+        * { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .heading { font-family: 'Poppins', sans-serif; font-weight: 800; }
+        body { background: #05070a; overflow-x: hidden; }
+
+        .depth-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; }
+        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #10b981 0%, transparent 70%); top: -10%; left: -10%; animation: float-slow 20s ease-in-out infinite; }
+        .orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, #fbbf24 0%, transparent 70%); bottom: -15%; right: -10%; animation: float-slow 25s ease-in-out infinite reverse; }
+        .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, #10b981 0%, transparent 70%); top: 40%; right: 20%; opacity: 0.2; animation: float-slow 18s ease-in-out infinite; }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.05); }
+            66% { transform: translate(-20px, 30px) scale(0.95); }
         }
-        
-        h1, h2, h3, .heading {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
+
+        .grid-floor {
+            position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
         }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
         }
-        
-        @keyframes pulse-slow {
-            0%, 100% {
-                opacity: 0.6;
-            }
-            50% {
-                opacity: 1;
-            }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
         }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
+
+        .glass-nav {
+            background: rgba(5, 7, 10, 0.6);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
-        
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
+
+        .tilt-card { transform-style: preserve-3d; perspective: 1000px; transition: transform 0.15s ease-out; will-change: transform; }
+        .tilt-card-inner { transform-style: preserve-3d; }
+
+        .tilt-glow {
+            position: absolute; inset: -1px; border-radius: inherit;
+            background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(16, 185, 129, 0.15), transparent 40%);
+            opacity: 0; transition: opacity 0.3s; pointer-events: none;
         }
-        
-        .animate-pulse-slow {
-            animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        .card-reveal {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-        
-        .card-reveal:nth-child(1) { animation-delay: 0.1s; }
-        .card-reveal:nth-child(2) { animation-delay: 0.2s; }
-        .card-reveal:nth-child(3) { animation-delay: 0.3s; }
-        .card-reveal:nth-child(4) { animation-delay: 0.4s; }
-        
+        .tilt-card:hover .tilt-glow { opacity: 1; }
+
+        @keyframes float-y { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-16px); } }
+        .float-element { animation: float-y 6s ease-in-out infinite; }
+        .float-element-delay-1 { animation-delay: 1s; }
+        .float-element-delay-2 { animation-delay: 2s; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; }
+        .reveal.visible { animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
         .gradient-text {
             background: linear-gradient(135deg, #10b981 0%, #fbbf24 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        
-        .glow-card {
-            position: relative;
-            overflow: hidden;
+
+        .badge-ring { position: relative; }
+        .badge-ring::before {
+            content: ''; position: absolute; inset: -2px; border-radius: inherit; padding: 2px;
+            background: linear-gradient(135deg, #10b981, #fbbf24, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.5;
         }
-        
-        .glow-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(251, 191, 36, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .glow-card:hover::before {
-            opacity: 1;
-        }
-        
-        .smooth-scroll {
-            scroll-behavior: smooth;
-        }
-        
-        /* Responsive adjustments */
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #05070a; }
+        ::-webkit-scrollbar-thumb { background: rgba(16, 185, 129, 0.3); border-radius: 4px; }
+
+        .smooth-scroll { scroll-behavior: smooth; }
+
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.25rem;
-            }
-            h2 {
-                font-size: 1.875rem;
-            }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .tilt-card { transform: none !important; }
         }
     </style>
 </head>
-<body class="bg-gradient-to-b from-[#0f1419] via-[#1a1f2e] to-[#0f1419] text-white smooth-scroll">
-    
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-[#0f1419]/80 backdrop-blur-md z-50 border-b border-emerald-500/10">
+<body class="text-white smooth-scroll relative">
+
+    <div class="depth-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grid-floor"></div>
+    </div>
+
+    <nav class="fixed top-0 w-full glass-nav z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-xl font-bold gradient-text">Daniel Mgbenka</div>
-            <div class="hidden md:flex gap-6">
-                <a href="#work" class="text-sm hover:text-emerald-400 transition duration-300">Work</a>
-                <a href="#skills" class="text-sm hover:text-emerald-400 transition duration-300">Skills</a>
-                <a href="#contact" class="text-sm hover:text-emerald-400 transition duration-300">Contact</a>
+            <div class="hidden md:flex gap-2">
+                <a href="#work" class="text-sm px-4 py-2 rounded-full hover:bg-white/5 transition duration-300">Work</a>
+                <a href="#skills" class="text-sm px-4 py-2 rounded-full hover:bg-white/5 transition duration-300">Skills</a>
+                <a href="#contact" class="text-sm px-4 py-2 rounded-full hover:bg-white/5 transition duration-300">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
-        <!-- Animated gradient orbs -->
-        <div class="absolute top-20 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+    <section class="min-h-screen flex items-center justify-center pt-24 px-6 relative z-10">
+        <div class="relative max-w-4xl mx-auto text-center">
 
-        <div class="relative z-10 max-w-4xl mx-auto text-center">
-            <!-- Badge -->
-            <div class="mb-6 inline-block">
-                <div class="px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-sm text-emerald-300">
+            <div class="mb-8 inline-block float-element">
+                <div class="badge-ring glass px-5 py-2.5 rounded-full text-sm text-emerald-300 font-medium">
                     ✨ Web3 × AgTech × Content
                 </div>
             </div>
 
-            <!-- Main Headline -->
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight relative">
                 Build community.
                 <br />
                 <span class="gradient-text">Move things.</span>
             </h1>
 
-            <!-- Subheading -->
-            <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
                 Final-year engineering student. Web3 content creator. Community builder growing 40% year-over-year. Passionate about blockchain, sustainability, and the future of DeFi.
             </p>
 
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <a href="#work" class="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold rounded-lg transition transform hover:scale-105 duration-300">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-20">
+                <a href="#work" class="px-8 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-xl transition transform hover:scale-105 duration-300 shadow-lg shadow-emerald-500/20">
                     See My Work
                 </a>
-                <a href="#contact" class="px-8 py-3 border border-amber-500/50 hover:border-amber-500 text-amber-400 font-semibold rounded-lg transition duration-300">
+                <a href="#contact" class="glass px-8 py-3.5 hover:bg-white/8 text-amber-300 font-semibold rounded-xl transition duration-300">
                     Get in Touch
                 </a>
             </div>
 
-            <!-- Stats -->
-            <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-                <div class="relative bg-[#1a1f2e] border border-emerald-500/20 rounded-lg p-6 hover:border-emerald-500/50 transition duration-300">
-                    <div class="text-3xl md:text-4xl font-bold text-emerald-400">20+</div>
-                    <div class="text-sm text-gray-400 mt-2">Articles & Threads</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
+                <div class="tilt-card float-element" onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="tilt-card-inner glass-strong rounded-2xl p-8 relative overflow-hidden" style="transform: translateY(-8px);">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl font-bold text-emerald-400 mb-1">20+</div>
+                            <div class="text-sm text-gray-400">Articles & Threads</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="relative bg-[#1a1f2e] border border-emerald-500/20 rounded-lg p-6 hover:border-emerald-500/50 transition duration-300">
-                    <div class="text-3xl md:text-4xl font-bold text-amber-400">40%</div>
-                    <div class="text-sm text-gray-400 mt-2">Community Growth</div>
+                <div class="tilt-card float-element float-element-delay-1" onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="tilt-card-inner glass-strong rounded-2xl p-8 relative overflow-hidden" style="transform: translateY(8px);">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl font-bold text-amber-400 mb-1">40%</div>
+                            <div class="text-sm text-gray-400">Community Growth</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="relative bg-[#1a1f2e] border border-emerald-500/20 rounded-lg p-6 hover:border-emerald-500/50 transition duration-300">
-                    <div class="text-3xl md:text-4xl font-bold text-emerald-400">5yrs+</div>
-                    <div class="text-sm text-gray-400 mt-2">Blockchain Interest</div>
+                <div class="tilt-card float-element float-element-delay-2" onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="tilt-card-inner glass-strong rounded-2xl p-8 relative overflow-hidden" style="transform: translateY(-8px);">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl font-bold text-emerald-400 mb-1">5yrs+</div>
+                            <div class="text-sm text-gray-400">Blockchain Interest</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Work Section -->
-    <section id="work" class="py-20 px-6">
+    <section id="work" class="py-24 px-6 relative z-10">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">
-                <span class="gradient-text">Work</span>
-            </h2>
-            <p class="text-gray-400 mb-16 text-lg">Projects that moved the needle</p>
+            <div class="reveal" data-reveal>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4"><span class="gradient-text">Work</span></h2>
+                <p class="text-gray-400 mb-16 text-lg">Projects that moved the needle</p>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Work Card 1 -->
-                <div class="card-reveal group relative bg-gradient-to-br from-[#1a1f2e] to-[#151a27] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-500 glow-card">
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-white mb-1">WAGMI Community Growth</h3>
-                                <p class="text-emerald-400 font-medium">Web3 Community Lead</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-1">WAGMI Community Growth</h3>
+                                    <p class="text-emerald-400 font-medium">Web3 Community Lead</p>
+                                </div>
+                                <span class="text-xs text-gray-400 glass px-3 py-1.5 rounded-full whitespace-nowrap">Jan 2024 – Now</span>
                             </div>
-                            <span class="text-xs text-gray-500 bg-gray-800/50 px-3 py-1 rounded-full">Jan 2024 – Now</span>
-                        </div>
-                        <p class="text-amber-300 font-semibold mb-4">40% growth to 500+ members</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Community</span>
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Blockchain</span>
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Meetups</span>
+                            <p class="text-amber-300 font-semibold mb-5">40% growth to 500+ members</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Community</span>
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Blockchain</span>
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Meetups</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Work Card 2 -->
-                <div class="card-reveal group relative bg-gradient-to-br from-[#1a1f2e] to-[#151a27] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-500 glow-card">
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-white mb-1">Swisstronik Content Campaign</h3>
-                                <p class="text-emerald-400 font-medium">Content Creator & Designer</p>
+                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-1">Swisstronik Content Campaign</h3>
+                                    <p class="text-emerald-400 font-medium">Content Creator & Designer</p>
+                                </div>
+                                <span class="text-xs text-gray-400 glass px-3 py-1.5 rounded-full whitespace-nowrap">Mar – May 2024</span>
                             </div>
-                            <span class="text-xs text-gray-500 bg-gray-800/50 px-3 py-1 rounded-full">Mar – May 2024</span>
-                        </div>
-                        <p class="text-amber-300 font-semibold mb-4">25% engagement boost for 5000+ members</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Content</span>
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Design</span>
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Social</span>
+                            <p class="text-amber-300 font-semibold mb-5">25% engagement boost for 5000+ members</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Content</span>
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Design</span>
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Social</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Work Card 3 -->
-                <div class="card-reveal group relative bg-gradient-to-br from-[#1a1f2e] to-[#151a27] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-500 glow-card">
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-white mb-1">College Guide Africa</h3>
-                                <p class="text-emerald-400 font-medium">Content Writer</p>
+                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-1">College Guide Africa</h3>
+                                    <p class="text-emerald-400 font-medium">Content Writer</p>
+                                </div>
+                                <span class="text-xs text-gray-400 glass px-3 py-1.5 rounded-full whitespace-nowrap">Aug '24 – Apr '25</span>
                             </div>
-                            <span class="text-xs text-gray-500 bg-gray-800/50 px-3 py-1 rounded-full">Aug 2024 – Apr 2025</span>
-                        </div>
-                        <p class="text-amber-300 font-semibold mb-4">20+ SEO articles, 20% engagement lift</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Writing</span>
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">SEO</span>
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Education</span>
+                            <p class="text-amber-300 font-semibold mb-5">20+ SEO articles, 20% engagement lift</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Writing</span>
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">SEO</span>
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Education</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Work Card 4 -->
-                <div class="card-reveal group relative bg-gradient-to-br from-[#1a1f2e] to-[#151a27] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-500 glow-card">
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-white mb-1">ABE Energy Sustainability</h3>
-                                <p class="text-emerald-400 font-medium">Engineering Project Lead</p>
+                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white mb-1">ABE Energy Sustainability</h3>
+                                    <p class="text-emerald-400 font-medium">Engineering Project Lead</p>
+                                </div>
+                                <span class="text-xs text-gray-400 glass px-3 py-1.5 rounded-full whitespace-nowrap">2025</span>
                             </div>
-                            <span class="text-xs text-gray-500 bg-gray-800/50 px-3 py-1 rounded-full">2025</span>
-                        </div>
-                        <p class="text-amber-300 font-semibold mb-4">20% emissions reduction via solar analysis</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Engineering</span>
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Data</span>
-                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Sustainability</span>
+                            <p class="text-amber-300 font-semibold mb-5">20% emissions reduction via solar analysis</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Engineering</span>
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Data</span>
+                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Sustainability</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 px-6 bg-gradient-to-b from-transparent via-[#0f1419]/50 to-transparent">
+    <section id="skills" class="py-24 px-6 relative z-10">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">
-                <span class="gradient-text">Skills</span>
-            </h2>
-            <p class="text-gray-400 mb-16 text-lg">Tools and expertise</p>
+            <div class="reveal" data-reveal>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4"><span class="gradient-text">Skills</span></h2>
+                <p class="text-gray-400 mb-16 text-lg">Tools and expertise</p>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Skills Group 1 -->
-                <div class="bg-[#1a1f2e] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-300 transform hover:translate-y-[-4px]">
-                    <h3 class="text-xl font-bold text-emerald-400 mb-6">Web3 & Blockchain</h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">DeFi</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">NFTs</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">Community Engagement</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">Protocol Analysis</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold text-emerald-400 mb-6">Web3 & Blockchain</h3>
+                            <div class="space-y-3.5">
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">DeFi</span></div>
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">NFTs</span></div>
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Community Engagement</span></div>
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Protocol Analysis</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Skills Group 2 -->
-                <div class="bg-[#1a1f2e] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-300 transform hover:translate-y-[-4px]">
-                    <h3 class="text-xl font-bold text-emerald-400 mb-6">Content & Design</h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">Content Writing</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">SEO</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">Canva</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">Photoshop</span>
+                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold text-emerald-400 mb-6">Content & Design</h3>
+                            <div class="space-y-3.5">
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Content Writing</span></div>
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">SEO</span></div>
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Canva</span></div>
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Photoshop</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Skills Group 3 -->
-                <div class="bg-[#1a1f2e] border border-emerald-500/20 rounded-xl p-8 hover:border-emerald-500/50 transition-all duration-300 transform hover:translate-y-[-4px]">
-                    <h3 class="text-xl font-bold text-emerald-400 mb-6">Technical</h3>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">Data Analysis (Excel)</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">RETScreen</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">Microsoft Office</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
-                            <span class="text-gray-300">Corel Draw</span>
+                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
+                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
+                        <div class="tilt-glow"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold text-emerald-400 mb-6">Technical</h3>
+                            <div class="space-y-3.5">
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Data Analysis (Excel)</span></div>
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">RETScreen</span></div>
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Microsoft Office</span></div>
+                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Corel Draw</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -341,57 +329,53 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-gradient-to-br from-emerald-500/10 to-amber-500/10 border border-emerald-500/30 rounded-2xl p-8 md:p-12 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's build something together</h2>
-                <p class="text-gray-300 mb-8 text-lg">
-                    Looking for a Web3 content creator, community manager, or just want to chat about blockchain and agtech? Let's connect.
-                </p>
+    <section id="contact" class="py-24 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto reveal" data-reveal>
+            <div class="glass-strong rounded-3xl p-8 md:p-14 text-center relative overflow-hidden">
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl"></div>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                    <a href="mailto:mgbenkadaniel@gmail.com" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold rounded-lg transition transform hover:scale-105 duration-300">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        Email Me
-                    </a>
-                    <a href="https://linkedin.com/in/danielmgbenka" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-amber-500/50 hover:border-amber-500 text-amber-400 font-semibold rounded-lg transition duration-300">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                        LinkedIn
-                    </a>
-                    <a href="https://x.com/jellereth" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-500/50 hover:border-gray-500 text-gray-300 font-semibold rounded-lg transition duration-300">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.748-5.924 6.748h-3.31l7.73-8.835L.424 2.25h6.7l4.759 6.318L17.525 2.25h.719zm-1.169 17.852h1.833L6.637 4.087H4.696l12.578 16.015z"/>
-                        </svg>
-                        X (Twitter)
-                    </a>
-                </div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's build something together</h2>
+                    <p class="text-gray-300 mb-10 text-lg max-w-xl mx-auto">
+                        Looking for a Web3 content creator, community manager, or just want to chat about blockchain and agtech? Let's connect.
+                    </p>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-                    <div class="text-gray-400">
-                        <div class="text-amber-400 font-semibold mb-1">Location</div>
-                        Ketu, Lagos, Nigeria
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                        <a href="mailto:mgbenkadaniel@gmail.com" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-xl transition transform hover:scale-105 duration-300 shadow-lg shadow-emerald-500/20">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            Email Me
+                        </a>
+                        <a href="https://linkedin.com/in/danielmgbenka" target="_blank" rel="noopener noreferrer" class="glass inline-flex items-center justify-center gap-2 px-6 py-3.5 hover:bg-white/8 text-amber-300 font-semibold rounded-xl transition duration-300">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://x.com/jellereth" target="_blank" rel="noopener noreferrer" class="glass inline-flex items-center justify-center gap-2 px-6 py-3.5 hover:bg-white/8 text-gray-200 font-semibold rounded-xl transition duration-300">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.748-5.924 6.748h-3.31l7.73-8.835L.424 2.25h6.7l4.759 6.318L17.525 2.25h.719zm-1.169 17.852h1.833L6.637 4.087H4.696l12.578 16.015z"/></svg>
+                            X (Twitter)
+                        </a>
                     </div>
-                    <div class="text-gray-400">
-                        <div class="text-emerald-400 font-semibold mb-1">Phone</div>
-                        +234 813 8700 329
-                    </div>
-                    <div class="text-gray-400">
-                        <div class="text-emerald-400 font-semibold mb-1">Email</div>
-                        mgbenkadaniel@gmail.com
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                        <div class="glass rounded-xl p-4 text-gray-400">
+                            <div class="text-amber-400 font-semibold mb-1">Location</div>
+                            Ketu, Lagos, Nigeria
+                        </div>
+                        <div class="glass rounded-xl p-4 text-gray-400">
+                            <div class="text-emerald-400 font-semibold mb-1">Phone</div>
+                            +234 813 8700 329
+                        </div>
+                        <div class="glass rounded-xl p-4 text-gray-400">
+                            <div class="text-emerald-400 font-semibold mb-1">Email</div>
+                            mgbenkadaniel@gmail.com
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-emerald-500/10 py-8 px-6">
+    <footer class="border-t border-white/5 py-8 px-6 relative z-10">
         <div class="max-w-6xl mx-auto text-center text-gray-500 text-sm">
             <p>Built with HTML + Tailwind CSS. Deployed on GitHub Pages.</p>
             <p class="mt-2">© 2025 Daniel Mgbenka. All rights reserved.</p>
@@ -399,37 +383,54 @@
     </footer>
 
     <script>
-        // Smooth scroll for navigation links
+        function tiltEffect(e, card) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -6;
+            const rotateY = ((x - centerX) / centerX) * 6;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+
+            const inner = card.querySelector('.tilt-glow');
+            if (inner) {
+                const mx = (x / rect.width) * 100;
+                const my = (y / rect.height) * 100;
+                inner.style.setProperty('--mx', mx + '%');
+                inner.style.setProperty('--my', my + '%');
+            }
+        }
+
+        function resetTilt(card) {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        }
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
-        // Add scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('card-reveal');
+                    entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-        // Observe all work cards
-        document.querySelectorAll('.group').forEach(card => {
-            if (!card.classList.contains('card-reveal')) {
-                observer.observe(card);
-            }
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            document.querySelector('.orb-1').style.transform = `translateY(${scrolled * 0.15}px)`;
+            document.querySelector('.orb-2').style.transform = `translateY(${scrolled * -0.1}px)`;
+            document.querySelector('.orb-3').style.transform = `translateY(${scrolled * 0.2}px)`;
         });
     </script>
 </body>
