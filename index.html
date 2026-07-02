@@ -1,437 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Mgbenka - Web3 Content Creator & Community Builder</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
-        
-        * { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, .heading { font-family: 'Poppins', sans-serif; font-weight: 800; }
-        body { background: #05070a; overflow-x: hidden; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel Mgbenka — Web3 Content & Community</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
 
-        .depth-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-        .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; }
-        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #10b981 0%, transparent 70%); top: -10%; left: -10%; animation: float-slow 20s ease-in-out infinite; }
-        .orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, #fbbf24 0%, transparent 70%); bottom: -15%; right: -10%; animation: float-slow 25s ease-in-out infinite reverse; }
-        .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, #10b981 0%, transparent 70%); top: 40%; right: 20%; opacity: 0.2; animation: float-slow 18s ease-in-out infinite; }
+* { font-family: 'Inter', sans-serif; box-sizing: border-box; }
+.display { font-family: 'Space Grotesk', sans-serif; }
+.mono { font-family: 'JetBrains Mono', monospace; }
 
-        @keyframes float-slow {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -40px) scale(1.05); }
-            66% { transform: translate(-20px, 30px) scale(0.95); }
-        }
+body {
+  background: #0a0c0f;
+  color: #f2f0e8;
+  overflow-x: hidden;
+}
 
-        .grid-floor {
-            position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
-        }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0a0c0f; }
+::-webkit-scrollbar-thumb { background: #ccff00; }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-        }
+/* ===== TICKER ===== */
+.ticker-wrap {
+  background: #ccff00;
+  color: #0a0c0f;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 2px solid #0a0c0f;
+  border-bottom: 2px solid #0a0c0f;
+}
+.ticker {
+  display: inline-block;
+  padding-left: 100%;
+  animation: ticker-scroll 28s linear infinite;
+}
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+.ticker span {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.6rem 2rem;
+  display: inline-block;
+}
 
-        .glass-strong {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-        }
+/* ===== GLASS PANEL (sharper, not pill-soft) ===== */
+.glass {
+  background: rgba(242, 240, 232, 0.04);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(242, 240, 232, 0.12);
+}
 
-        .glass-nav {
-            background: rgba(5, 7, 10, 0.6);
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
+.glass-lime {
+  background: rgba(204, 255, 0, 0.06);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(204, 255, 0, 0.25);
+}
 
-        .tilt-card { transform-style: preserve-3d; perspective: 1000px; transition: transform 0.15s ease-out; will-change: transform; }
-        .tilt-card-inner { transform-style: preserve-3d; }
+/* ===== NOISE TEXTURE ===== */
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-        .tilt-glow {
-            position: absolute; inset: -1px; border-radius: inherit;
-            background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(16, 185, 129, 0.15), transparent 40%);
-            opacity: 0; transition: opacity 0.3s; pointer-events: none;
-        }
-        .tilt-card:hover .tilt-glow { opacity: 1; }
+/* ===== BACKGROUND GLOW ===== */
+.field-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 700px 500px at 15% 0%, rgba(204,255,0,0.08), transparent 60%),
+    radial-gradient(ellipse 600px 500px at 100% 40%, rgba(255,107,53,0.08), transparent 60%);
+}
 
-        @keyframes float-y { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-16px); } }
-        .float-element { animation: float-y 6s ease-in-out infinite; }
-        .float-element-delay-1 { animation-delay: 1s; }
-        .float-element-delay-2 { animation-delay: 2s; }
+/* ===== HERO TYPE ===== */
+.mega {
+  font-size: clamp(3.2rem, 9vw, 8.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
 
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        .reveal { opacity: 0; }
-        .reveal.visible { animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.outline-text {
+  -webkit-text-stroke: 1.5px #f2f0e8;
+  color: transparent;
+}
 
-        .gradient-text {
-            background: linear-gradient(135deg, #10b981 0%, #fbbf24 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
+/* ===== LEDGER ROWS ===== */
+.ledger-row {
+  border-top: 1px solid rgba(242,240,232,0.15);
+  transition: all 0.3s ease;
+  position: relative;
+}
+.ledger-row:hover {
+  background: rgba(204,255,0,0.04);
+  padding-left: 8px;
+}
+.ledger-row:last-child { border-bottom: 1px solid rgba(242,240,232,0.15); }
 
-        .badge-ring { position: relative; }
-        .badge-ring::before {
-            content: ''; position: absolute; inset: -2px; border-radius: inherit; padding: 2px;
-            background: linear-gradient(135deg, #10b981, #fbbf24, transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.5;
-        }
+.hash-id {
+  color: #ccff00;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #05070a; }
-        ::-webkit-scrollbar-thumb { background: rgba(16, 185, 129, 0.3); border-radius: 4px; }
+/* ===== REVEAL ===== */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; }
+.reveal.visible { animation: riseIn 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
 
-        .smooth-scroll { scroll-behavior: smooth; }
+/* ===== DIAGONAL DIVIDER ===== */
+.diagonal-cut {
+  clip-path: polygon(0 4%, 100% 0, 100% 96%, 0% 100%);
+}
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-            .tilt-card { transform: none !important; }
-        }
-    </style>
+/* ===== SKILL PILL - sharp not round ===== */
+.pill {
+  border: 1px solid rgba(242,240,232,0.25);
+  transition: all 0.25s ease;
+}
+.pill:hover {
+  border-color: #ccff00;
+  background: rgba(204,255,0,0.08);
+  transform: translateY(-2px);
+}
+
+.underline-grow {
+  position: relative;
+}
+.underline-grow::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: #ccff00;
+  transition: width 0.3s ease;
+}
+.underline-grow:hover::after { width: 100%; }
+
+.blink {
+  animation: blink 1.4s step-start infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .mega { font-size: clamp(2.4rem, 12vw, 4rem); }
+}
+</style>
 </head>
-<body class="text-white smooth-scroll relative">
+<body class="relative">
 
-    <div class="depth-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-        <div class="grid-floor"></div>
+<div class="noise"></div>
+<div class="field-glow"></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 glass">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex justify-between items-center">
+    <div class="display font-bold text-lg">DM<span class="text-[#ccff00]">.</span></div>
+    <div class="hidden md:flex gap-8 mono text-sm">
+      <a href="#work" class="underline-grow">01 / WORK</a>
+      <a href="#skills" class="underline-grow">02 / SKILLS</a>
+      <a href="#contact" class="underline-grow">03 / CONTACT</a>
+    </div>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap fixed top-[57px] w-full z-40">
+  <div class="ticker">
+    <span>WEB3 CONTENT CREATOR</span>
+    <span>·</span>
+    <span>500+ COMMUNITY MEMBERS GROWN</span>
+    <span>·</span>
+    <span>20+ ARTICLES PUBLISHED</span>
+    <span>·</span>
+    <span>40% ENGAGEMENT LIFT</span>
+    <span>·</span>
+    <span>AMBASSADOR: CACHE WALLET × 1DELTA</span>
+    <span>·</span>
+    <span>FINAL YEAR — AGRIC & BIOSYSTEMS ENGINEERING</span>
+    <span>·</span>
+    <span>LAGOS, NIGERIA</span>
+    <span>·</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="min-h-screen flex flex-col justify-center px-6 md:px-10 pt-40 pb-20 relative z-10 max-w-7xl mx-auto">
+
+  <div class="reveal" data-reveal>
+    <div class="mono text-xs text-[#ccff00] mb-4 tracking-widest">// PORTFOLIO_2025<span class="blink">_</span></div>
+  </div>
+
+  <h1 class="mega display font-black mb-2 reveal" data-reveal>
+    DANIEL
+  </h1>
+  <h1 class="mega display font-black mb-8 reveal outline-text" data-reveal>
+    MGBENKA
+  </h1>
+
+  <div class="reveal grid md:grid-cols-2 gap-10 items-end mt-4" data-reveal>
+    <p class="text-lg md:text-xl text-[#f2f0e8]/80 leading-relaxed max-w-md">
+      I write, design, and build community for Web3 protocols — while finishing an engineering degree that taught me systems don't scale on hype alone.
+    </p>
+    <div class="flex gap-4 md:justify-end">
+      <a href="#work" class="bg-[#ccff00] text-[#0a0c0f] px-7 py-3.5 font-bold display hover:bg-[#f2f0e8] transition duration-300">
+        VIEW WORK →
+      </a>
+      <a href="#contact" class="glass px-7 py-3.5 font-bold display hover:border-[#ccff00] transition duration-300">
+        CONTACT
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<!-- STATS STRIP -->
+<section class="relative z-10 border-y border-[#f2f0e8]/15 reveal" data-reveal>
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4">
+    <div class="p-8 border-r border-[#f2f0e8]/15">
+      <div class="display text-4xl md:text-5xl font-bold text-[#ccff00]">20+</div>
+      <div class="mono text-xs text-[#f2f0e8]/50 mt-2">ARTICLES / THREADS</div>
+    </div>
+    <div class="p-8 border-r border-[#f2f0e8]/15">
+      <div class="display text-4xl md:text-5xl font-bold text-[#ff6b35]">40%</div>
+      <div class="mono text-xs text-[#f2f0e8]/50 mt-2">COMMUNITY GROWTH</div>
+    </div>
+    <div class="p-8 border-r border-[#f2f0e8]/15">
+      <div class="display text-4xl md:text-5xl font-bold text-[#ccff00]">5+</div>
+      <div class="mono text-xs text-[#f2f0e8]/50 mt-2">PROTOCOLS WORKED</div>
+    </div>
+    <div class="p-8">
+      <div class="display text-4xl md:text-5xl font-bold text-[#ff6b35]">2</div>
+      <div class="mono text-xs text-[#f2f0e8]/50 mt-2">AMBASSADOR ROLES</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK — LEDGER STYLE -->
+<section id="work" class="py-28 px-6 md:px-10 relative z-10 max-w-7xl mx-auto">
+  <div class="reveal flex items-end justify-between mb-16 flex-wrap gap-4" data-reveal>
+    <h2 class="display text-5xl md:text-7xl font-black">WORK<span class="text-[#ccff00]">/</span>LOG</h2>
+    <div class="mono text-sm text-[#f2f0e8]/50">4 ENTRIES</div>
+  </div>
+
+  <div class="reveal" data-reveal>
+
+    <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
+      <div class="md:col-span-1 hash-id">TX#001</div>
+      <div class="md:col-span-4">
+        <h3 class="display text-2xl font-bold">WAGMI Community</h3>
+        <p class="mono text-xs text-[#ccff00] mt-1">WEB3 COMMUNITY LEAD</p>
+      </div>
+      <div class="md:col-span-4 text-[#f2f0e8]/70">40% growth to 500+ members via 6+ quarterly meetups</div>
+      <div class="md:col-span-2 flex flex-wrap gap-2">
+        <span class="pill mono text-xs px-2.5 py-1">COMMUNITY</span>
+      </div>
+      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">2024–NOW</div>
     </div>
 
-    <nav class="fixed top-0 w-full glass-nav z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-xl font-bold gradient-text">Daniel Mgbenka</div>
-            <div class="hidden md:flex gap-2">
-                <a href="#work" class="text-sm px-4 py-2 rounded-full hover:bg-white/5 transition duration-300">Work</a>
-                <a href="#skills" class="text-sm px-4 py-2 rounded-full hover:bg-white/5 transition duration-300">Skills</a>
-                <a href="#contact" class="text-sm px-4 py-2 rounded-full hover:bg-white/5 transition duration-300">Contact</a>
-            </div>
+    <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
+      <div class="md:col-span-1 hash-id">TX#002</div>
+      <div class="md:col-span-4">
+        <h3 class="display text-2xl font-bold">Swisstronik</h3>
+        <p class="mono text-xs text-[#ff6b35] mt-1">CONTENT & DESIGN</p>
+      </div>
+      <div class="md:col-span-4 text-[#f2f0e8]/70">20+ threads & infographics, 25% engagement lift for 5,000+ members</div>
+      <div class="md:col-span-2 flex flex-wrap gap-2">
+        <span class="pill mono text-xs px-2.5 py-1">DESIGN</span>
+      </div>
+      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">MAR–MAY24</div>
+    </div>
+
+    <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
+      <div class="md:col-span-1 hash-id">TX#003</div>
+      <div class="md:col-span-4">
+        <h3 class="display text-2xl font-bold">College Guide Africa</h3>
+        <p class="mono text-xs text-[#ccff00] mt-1">CONTENT WRITER</p>
+      </div>
+      <div class="md:col-span-4 text-[#f2f0e8]/70">20+ SEO articles, 20% engagement increase on site</div>
+      <div class="md:col-span-2 flex flex-wrap gap-2">
+        <span class="pill mono text-xs px-2.5 py-1">SEO</span>
+      </div>
+      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">'24–'25</div>
+    </div>
+
+    <div class="ledger-row py-8 px-4 grid md:grid-cols-12 gap-4 items-center">
+      <div class="md:col-span-1 hash-id">TX#004</div>
+      <div class="md:col-span-4">
+        <h3 class="display text-2xl font-bold">ABE Energy Profile</h3>
+        <p class="mono text-xs text-[#ff6b35] mt-1">ENGINEERING LEAD</p>
+      </div>
+      <div class="md:col-span-4 text-[#f2f0e8]/70">20% emissions reduction via RETScreen solar analysis</div>
+      <div class="md:col-span-2 flex flex-wrap gap-2">
+        <span class="pill mono text-xs px-2.5 py-1">ENGINEERING</span>
+      </div>
+      <div class="md:col-span-1 mono text-xs text-[#f2f0e8]/40 text-right">2025</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-28 px-6 md:px-10 relative z-10 border-t border-[#f2f0e8]/15">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="reveal display text-5xl md:text-7xl font-black mb-16" data-reveal>
+      SKILL<span class="text-[#ff6b35]">SET</span>
+    </h2>
+
+    <div class="reveal grid md:grid-cols-3 gap-10" data-reveal>
+      <div>
+        <div class="mono text-xs text-[#ccff00] mb-4">// WEB3 & BLOCKCHAIN</div>
+        <div class="flex flex-wrap gap-2">
+          <span class="pill px-4 py-2 mono text-sm">DeFi</span>
+          <span class="pill px-4 py-2 mono text-sm">NFTs</span>
+          <span class="pill px-4 py-2 mono text-sm">Community Eng.</span>
+          <span class="pill px-4 py-2 mono text-sm">Protocol Analysis</span>
         </div>
-    </nav>
-
-    <section class="min-h-screen flex items-center justify-center pt-24 px-6 relative z-10">
-        <div class="relative max-w-4xl mx-auto text-center">
-
-            <div class="mb-8 inline-block float-element">
-                <div class="badge-ring glass px-5 py-2.5 rounded-full text-sm text-emerald-300 font-medium">
-                    ✨ Web3 × AgTech × Content
-                </div>
-            </div>
-
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight relative">
-                Build community.
-                <br />
-                <span class="gradient-text">Move things.</span>
-            </h1>
-
-            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Final-year engineering student. Web3 content creator. Community builder growing 40% year-over-year. Passionate about blockchain, sustainability, and the future of DeFi.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-                <a href="#work" class="px-8 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-xl transition transform hover:scale-105 duration-300 shadow-lg shadow-emerald-500/20">
-                    See My Work
-                </a>
-                <a href="#contact" class="glass px-8 py-3.5 hover:bg-white/8 text-amber-300 font-semibold rounded-xl transition duration-300">
-                    Get in Touch
-                </a>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
-                <div class="tilt-card float-element" onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
-                    <div class="tilt-card-inner glass-strong rounded-2xl p-8 relative overflow-hidden" style="transform: translateY(-8px);">
-                        <div class="tilt-glow"></div>
-                        <div class="relative z-10">
-                            <div class="text-4xl font-bold text-emerald-400 mb-1">20+</div>
-                            <div class="text-sm text-gray-400">Articles & Threads</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tilt-card float-element float-element-delay-1" onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
-                    <div class="tilt-card-inner glass-strong rounded-2xl p-8 relative overflow-hidden" style="transform: translateY(8px);">
-                        <div class="tilt-glow"></div>
-                        <div class="relative z-10">
-                            <div class="text-4xl font-bold text-amber-400 mb-1">40%</div>
-                            <div class="text-sm text-gray-400">Community Growth</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tilt-card float-element float-element-delay-2" onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
-                    <div class="tilt-card-inner glass-strong rounded-2xl p-8 relative overflow-hidden" style="transform: translateY(-8px);">
-                        <div class="tilt-glow"></div>
-                        <div class="relative z-10">
-                            <div class="text-4xl font-bold text-emerald-400 mb-1">5yrs+</div>
-                            <div class="text-sm text-gray-400">Blockchain Interest</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div>
+        <div class="mono text-xs text-[#ff6b35] mb-4">// CONTENT & DESIGN</div>
+        <div class="flex flex-wrap gap-2">
+          <span class="pill px-4 py-2 mono text-sm">Content Writing</span>
+          <span class="pill px-4 py-2 mono text-sm">SEO</span>
+          <span class="pill px-4 py-2 mono text-sm">Canva</span>
+          <span class="pill px-4 py-2 mono text-sm">Photoshop</span>
         </div>
-    </section>
-
-    <section id="work" class="py-24 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <div class="reveal" data-reveal>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4"><span class="gradient-text">Work</span></h2>
-                <p class="text-gray-400 mb-16 text-lg">Projects that moved the needle</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
-                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
-                        <div class="tilt-glow"></div>
-                        <div class="relative z-10">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-white mb-1">WAGMI Community Growth</h3>
-                                    <p class="text-emerald-400 font-medium">Web3 Community Lead</p>
-                                </div>
-                                <span class="text-xs text-gray-400 glass px-3 py-1.5 rounded-full whitespace-nowrap">Jan 2024 – Now</span>
-                            </div>
-                            <p class="text-amber-300 font-semibold mb-5">40% growth to 500+ members</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Community</span>
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Blockchain</span>
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Meetups</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
-                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
-                        <div class="tilt-glow"></div>
-                        <div class="relative z-10">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-white mb-1">Swisstronik Content Campaign</h3>
-                                    <p class="text-emerald-400 font-medium">Content Creator & Designer</p>
-                                </div>
-                                <span class="text-xs text-gray-400 glass px-3 py-1.5 rounded-full whitespace-nowrap">Mar – May 2024</span>
-                            </div>
-                            <p class="text-amber-300 font-semibold mb-5">25% engagement boost for 5000+ members</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Content</span>
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Design</span>
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Social</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
-                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
-                        <div class="tilt-glow"></div>
-                        <div class="relative z-10">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-white mb-1">College Guide Africa</h3>
-                                    <p class="text-emerald-400 font-medium">Content Writer</p>
-                                </div>
-                                <span class="text-xs text-gray-400 glass px-3 py-1.5 rounded-full whitespace-nowrap">Aug '24 – Apr '25</span>
-                            </div>
-                            <p class="text-amber-300 font-semibold mb-5">20+ SEO articles, 20% engagement lift</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Writing</span>
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">SEO</span>
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Education</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
-                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
-                        <div class="tilt-glow"></div>
-                        <div class="relative z-10">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-white mb-1">ABE Energy Sustainability</h3>
-                                    <p class="text-emerald-400 font-medium">Engineering Project Lead</p>
-                                </div>
-                                <span class="text-xs text-gray-400 glass px-3 py-1.5 rounded-full whitespace-nowrap">2025</span>
-                            </div>
-                            <p class="text-amber-300 font-semibold mb-5">20% emissions reduction via solar analysis</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Engineering</span>
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Data</span>
-                                <span class="text-xs px-3 py-1.5 rounded-full glass text-emerald-300">Sustainability</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+      </div>
+      <div>
+        <div class="mono text-xs text-[#ccff00] mb-4">// TECHNICAL</div>
+        <div class="flex flex-wrap gap-2">
+          <span class="pill px-4 py-2 mono text-sm">Excel</span>
+          <span class="pill px-4 py-2 mono text-sm">RETScreen</span>
+          <span class="pill px-4 py-2 mono text-sm">MS Office</span>
+          <span class="pill px-4 py-2 mono text-sm">Corel Draw</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="skills" class="py-24 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <div class="reveal" data-reveal>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4"><span class="gradient-text">Skills</span></h2>
-                <p class="text-gray-400 mb-16 text-lg">Tools and expertise</p>
-            </div>
+<!-- CONTACT -->
+<section id="contact" class="py-32 px-6 md:px-10 relative z-10 border-t border-[#f2f0e8]/15">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal" data-reveal>
+      <div class="mono text-xs text-[#ccff00] mb-6">// LET'S TALK</div>
+      <h2 class="display font-black mega mb-12">
+        GET IN<br><span class="outline-text">TOUCH</span>
+      </h2>
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
-                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
-                        <div class="tilt-glow"></div>
-                        <div class="relative z-10">
-                            <h3 class="text-xl font-bold text-emerald-400 mb-6">Web3 & Blockchain</h3>
-                            <div class="space-y-3.5">
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">DeFi</span></div>
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">NFTs</span></div>
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Community Engagement</span></div>
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Protocol Analysis</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="reveal grid md:grid-cols-3 gap-6 mb-16" data-reveal>
+      <a href="mailto:mgbenkadaniel@gmail.com" class="glass-lime p-8 hover:bg-[#ccff00]/10 transition duration-300 group">
+        <div class="mono text-xs text-[#ccff00] mb-3">EMAIL</div>
+        <div class="display text-lg font-bold break-all">mgbenkadaniel@gmail.com</div>
+      </a>
+      <a href="https://linkedin.com/in/danielmgbenka" target="_blank" rel="noopener noreferrer" class="glass p-8 hover:border-[#ccff00] transition duration-300">
+        <div class="mono text-xs text-[#f2f0e8]/50 mb-3">LINKEDIN</div>
+        <div class="display text-lg font-bold">/in/danielmgbenka</div>
+      </a>
+      <a href="https://x.com/jellereth" target="_blank" rel="noopener noreferrer" class="glass p-8 hover:border-[#ff6b35] transition duration-300">
+        <div class="mono text-xs text-[#f2f0e8]/50 mb-3">X / TWITTER</div>
+        <div class="display text-lg font-bold">@jellereth</div>
+      </a>
+    </div>
 
-                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
-                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
-                        <div class="tilt-glow"></div>
-                        <div class="relative z-10">
-                            <h3 class="text-xl font-bold text-emerald-400 mb-6">Content & Design</h3>
-                            <div class="space-y-3.5">
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Content Writing</span></div>
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">SEO</span></div>
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Canva</span></div>
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Photoshop</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="reveal flex flex-wrap gap-x-10 gap-y-3 mono text-sm text-[#f2f0e8]/50" data-reveal>
+      <div>PHONE: +234 813 8700 329</div>
+      <div>LOCATION: KETU, LAGOS, NIGERIA</div>
+      <div>STATUS: AVAILABLE NOW</div>
+    </div>
+  </div>
+</section>
 
-                <div class="reveal tilt-card" data-reveal onmousemove="tiltEffect(event, this)" onmouseleave="resetTilt(this)">
-                    <div class="tilt-card-inner glass rounded-2xl p-8 relative overflow-hidden hover:bg-white/[0.06] transition-colors duration-300">
-                        <div class="tilt-glow"></div>
-                        <div class="relative z-10">
-                            <h3 class="text-xl font-bold text-emerald-400 mb-6">Technical</h3>
-                            <div class="space-y-3.5">
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Data Analysis (Excel)</span></div>
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">RETScreen</span></div>
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Microsoft Office</span></div>
-                                <div class="flex items-center gap-3"><div class="w-1.5 h-1.5 rounded-full bg-amber-400"></div><span class="text-gray-300">Corel Draw</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<footer class="border-t border-[#f2f0e8]/15 py-8 px-6 md:px-10 relative z-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-2 mono text-xs text-[#f2f0e8]/40">
+    <div>© 2025 DANIEL MGBENKA. ALL RIGHTS RESERVED.</div>
+    <div>BUILT WITH HTML + TAILWIND. DEPLOYED ON GITHUB PAGES.</div>
+  </div>
+</footer>
 
-    <section id="contact" class="py-24 px-6 relative z-10">
-        <div class="max-w-4xl mx-auto reveal" data-reveal>
-            <div class="glass-strong rounded-3xl p-8 md:p-14 text-center relative overflow-hidden">
-                <div class="absolute -top-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
-                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl"></div>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const t = document.querySelector(this.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
-                <div class="relative z-10">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's build something together</h2>
-                    <p class="text-gray-300 mb-10 text-lg max-w-xl mx-auto">
-                        Looking for a Web3 content creator, community manager, or just want to chat about blockchain and agtech? Let's connect.
-                    </p>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                        <a href="mailto:mgbenkadaniel@gmail.com" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-xl transition transform hover:scale-105 duration-300 shadow-lg shadow-emerald-500/20">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                            Email Me
-                        </a>
-                        <a href="https://linkedin.com/in/danielmgbenka" target="_blank" rel="noopener noreferrer" class="glass inline-flex items-center justify-center gap-2 px-6 py-3.5 hover:bg-white/8 text-amber-300 font-semibold rounded-xl transition duration-300">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            LinkedIn
-                        </a>
-                        <a href="https://x.com/jellereth" target="_blank" rel="noopener noreferrer" class="glass inline-flex items-center justify-center gap-2 px-6 py-3.5 hover:bg-white/8 text-gray-200 font-semibold rounded-xl transition duration-300">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.748-5.924 6.748h-3.31l7.73-8.835L.424 2.25h6.7l4.759 6.318L17.525 2.25h.719zm-1.169 17.852h1.833L6.637 4.087H4.696l12.578 16.015z"/></svg>
-                            X (Twitter)
-                        </a>
-                    </div>
+document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+</script>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-                        <div class="glass rounded-xl p-4 text-gray-400">
-                            <div class="text-amber-400 font-semibold mb-1">Location</div>
-                            Ketu, Lagos, Nigeria
-                        </div>
-                        <div class="glass rounded-xl p-4 text-gray-400">
-                            <div class="text-emerald-400 font-semibold mb-1">Phone</div>
-                            +234 813 8700 329
-                        </div>
-                        <div class="glass rounded-xl p-4 text-gray-400">
-                            <div class="text-emerald-400 font-semibold mb-1">Email</div>
-                            mgbenkadaniel@gmail.com
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="border-t border-white/5 py-8 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto text-center text-gray-500 text-sm">
-            <p>Built with HTML + Tailwind CSS. Deployed on GitHub Pages.</p>
-            <p class="mt-2">© 2025 Daniel Mgbenka. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        function tiltEffect(e, card) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -6;
-            const rotateY = ((x - centerX) / centerX) * 6;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-
-            const inner = card.querySelector('.tilt-glow');
-            if (inner) {
-                const mx = (x / rect.width) * 100;
-                const my = (y / rect.height) * 100;
-                inner.style.setProperty('--mx', mx + '%');
-                inner.style.setProperty('--my', my + '%');
-            }
-        }
-
-        function resetTilt(card) {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
-
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            document.querySelector('.orb-1').style.transform = `translateY(${scrolled * 0.15}px)`;
-            document.querySelector('.orb-2').style.transform = `translateY(${scrolled * -0.1}px)`;
-            document.querySelector('.orb-3').style.transform = `translateY(${scrolled * 0.2}px)`;
-        });
-    </script>
 </body>
 </html>
